@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "L:\\AceSpace_Godot\\SpaceAce.csproj": {}
+    "D:\\AceSpace_Godot\\SpaceAce.csproj": {}
   },
   "projects": {
-    "L:\\AceSpace_Godot\\SpaceAce.csproj": {
+    "D:\\AceSpace_Godot\\SpaceAce.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "L:\\AceSpace_Godot\\SpaceAce.csproj",
+        "projectUniqueName": "D:\\AceSpace_Godot\\SpaceAce.csproj",
         "projectName": "SpaceAce",
-        "projectPath": "L:\\AceSpace_Godot\\SpaceAce.csproj",
-        "packagesPath": "C:\\Users\\biso\\.nuget\\packages\\",
-        "outputPath": "L:\\AceSpace_Godot\\.godot\\mono\\temp\\obj\\",
+        "projectPath": "D:\\AceSpace_Godot\\SpaceAce.csproj",
+        "packagesPath": "C:\\Users\\shanf\\.nuget\\packages\\",
+        "outputPath": "D:\\AceSpace_Godot\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\biso\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\shanf\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -25,6 +25,7 @@
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -43,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -51,17 +52,17 @@
           "dependencies": {
             "Godot.SourceGenerators": {
               "target": "Package",
-              "version": "[4.6.0, )",
+              "version": "[4.5.1, )",
               "autoReferenced": true
             },
             "GodotSharp": {
               "target": "Package",
-              "version": "[4.6.0, )",
+              "version": "[4.5.1, )",
               "autoReferenced": true
             },
             "GodotSharpEditor": {
               "target": "Package",
-              "version": "[4.6.0, )",
+              "version": "[4.5.1, )",
               "autoReferenced": true
             }
           },
@@ -76,12 +77,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.22, 8.0.22]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
