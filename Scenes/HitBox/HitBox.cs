@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+[GlobalClass]
 public partial class HitBox : Area2D
 {
 	[Export] protected int _damage = 10;
@@ -21,9 +22,10 @@ public partial class HitBox : Area2D
 		_collisionShape2D.SetDeferred(CollisionShape2D.PropertyName.Disabled,true);
 	}
 
-    private void OnAreaEnter(Area2D area)
+	protected virtual void OnAreaEnter(Area2D area)
     {
-        throw new NotImplementedException();
+        GD.Print("==>  2 OnAreaEnter");
+		//throw new NotImplementedException();
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.

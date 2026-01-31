@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://btv8qn0wdyoui"]
+
+[ext_resource type="PackedScene" uid="uid://brsq6mnd8e2ww" path="res://Scenes/Enemy/EnemyBase.tscn" id="1_reopv"]
+[ext_resource type="Texture2D" uid="uid://c2cc8flfy7pjx" path="res://assets/ships/biomech_1.png" id="2_isg3k"]
+[ext_resource type="Texture2D" uid="uid://cnawvwy103hsk" path="res://assets/ships/biomech_2.png" id="3_n0rxi"]
+[ext_resource type="Texture2D" uid="uid://b4l1oowpssg18" path="res://assets/ships/biomech_3.png" id="4_e3fol"]
+[ext_resource type="Texture2D" uid="uid://bwmbxx46op33r" path="res://assets/ships/biomech_4.png" id="5_jxeeq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nx3nw"]
+atlas = ExtResource("2_isg3k")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26csn"]
+atlas = ExtResource("2_isg3k")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0rxi"]
+atlas = ExtResource("2_isg3k")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3fol"]
+atlas = ExtResource("2_isg3k")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1xdw"]
+atlas = ExtResource("3_n0rxi")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wscj3"]
+atlas = ExtResource("3_n0rxi")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl6cx"]
+atlas = ExtResource("3_n0rxi")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_po6xd"]
+atlas = ExtResource("3_n0rxi")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_raqwm"]
+atlas = ExtResource("4_e3fol")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_we56l"]
+atlas = ExtResource("4_e3fol")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1am1"]
+atlas = ExtResource("4_e3fol")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ub6fy"]
+atlas = ExtResource("4_e3fol")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ik305"]
+atlas = ExtResource("5_jxeeq")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8vr1"]
+atlas = ExtResource("5_jxeeq")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx1l7"]
+atlas = ExtResource("5_jxeeq")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8hfh"]
+atlas = ExtResource("5_jxeeq")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jxeeq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nx3nw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26csn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0rxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3fol")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1xdw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wscj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vl6cx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_po6xd")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_raqwm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_we56l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1am1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ub6fy")
+}],
+"loop": true,
+"name": &"new_animation_1",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ik305")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8vr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qx1l7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8hfh")
+}],
+"loop": true,
+"name": &"new_animation_2",
+"speed": 8.0
+}]
+
+[node name="EnemyBio" unique_id=1415025072 instance=ExtResource("1_reopv")]
+
+[node name="AnimatedSprite2D" parent="." index="5" unique_id=1890845579]
+sprite_frames = SubResource("SpriteFrames_jxeeq")
+animation = &"new_animation_1"

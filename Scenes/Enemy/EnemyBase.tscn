@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://brsq6mnd8e2ww"]
+
+[ext_resource type="PackedScene" uid="uid://cx65lbgi8ha1" path="res://Scenes/HitBox/HitBox.tscn" id="1_klqhl"]
+[ext_resource type="Script" uid="uid://hgquj77v7jw3" path="res://Scenes/Enemy/EnemyBase.cs" id="1_p26r3"]
+[ext_resource type="PackedScene" uid="uid://j57uaaweb83i" path="res://Scenes/OutOfTime/OutOfTime.tscn" id="2_p26r3"]
+
+[node name="EnemyBase" type="PathFollow2D" unique_id=1415025072]
+rotates = false
+script = ExtResource("1_p26r3")
+
+[node name="HitBox" parent="." unique_id=1095739546 instance=ExtResource("1_klqhl")]
+collision_layer = 2
+collision_mask = 4
+
+[node name="Booms" type="Node2D" parent="." unique_id=724250460]
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="." unique_id=1442015235]
+
+[node name="OutOfTime" parent="." unique_id=783146386 instance=ExtResource("2_p26r3")]
+_lifeTime = 40.0
+
+[node name="LaserTimer" type="Timer" parent="." unique_id=34054096]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1890845579]
+flip_v = true

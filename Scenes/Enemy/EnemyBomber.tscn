@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://cay4i7k1ujmoo"]
+
+[ext_resource type="PackedScene" uid="uid://brsq6mnd8e2ww" path="res://Scenes/Enemy/EnemyBase.tscn" id="1_qq2v7"]
+[ext_resource type="Texture2D" uid="uid://srrx3qlcy0ff" path="res://assets/ships/bomber_1.png" id="2_80e1w"]
+[ext_resource type="Texture2D" uid="uid://djsa8iq5cshk4" path="res://assets/ships/bomber_2.png" id="3_5ufov"]
+[ext_resource type="Texture2D" uid="uid://dnggprhs8k7me" path="res://assets/ships/bomber_3.png" id="4_e1jro"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg42l"]
+atlas = ExtResource("2_80e1w")
+region = Rect2(0, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsns5"]
+atlas = ExtResource("2_80e1w")
+region = Rect2(48, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6g4n"]
+atlas = ExtResource("2_80e1w")
+region = Rect2(96, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxs5x"]
+atlas = ExtResource("2_80e1w")
+region = Rect2(144, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufo06"]
+atlas = ExtResource("3_5ufov")
+region = Rect2(0, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exf7p"]
+atlas = ExtResource("3_5ufov")
+region = Rect2(48, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsabt"]
+atlas = ExtResource("3_5ufov")
+region = Rect2(96, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0mku"]
+atlas = ExtResource("3_5ufov")
+region = Rect2(144, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0prg"]
+atlas = ExtResource("4_e1jro")
+region = Rect2(0, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bu8i"]
+atlas = ExtResource("4_e1jro")
+region = Rect2(48, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_813od"]
+atlas = ExtResource("4_e1jro")
+region = Rect2(96, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgnwv"]
+atlas = ExtResource("4_e1jro")
+region = Rect2(144, 0, 48, 58)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ifbir"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg42l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsns5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6g4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxs5x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufo06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exf7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsabt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0mku")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0prg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bu8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_813od")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgnwv")
+}],
+"loop": true,
+"name": &"new_animation_1",
+"speed": 8.0
+}]
+
+[node name="EnemyBomber" unique_id=1415025072 instance=ExtResource("1_qq2v7")]
+
+[node name="AnimatedSprite2D" parent="." index="5" unique_id=1890845579]
+sprite_frames = SubResource("SpriteFrames_ifbir")
+animation = &"new_animation_1"
