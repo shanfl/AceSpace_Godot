@@ -21,16 +21,33 @@ public partial class Player : Area2D
 	public override void _Ready()
 	{
         AreaEntered += OnAreaEntered;
+        SetLimits();
 	}
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(double delta)
-	{
-	}
+    {
+        Vector2 desirePosition = GlobalPosition + GetInput()*(float)delta * _speed;
+        GlobalPosition = desirePosition.Clamp(_upperLeft,_lowerRight);
+
+    }
 
     private Vector2 GetInput()
     {
-        Vector2 v = Vector2.Zero;
+        Vector2 v = new Vector2(Input.GetAxis("left","right"),Input.GetAxis("up","down"));
+        //GD.Print($"v.x: {v.X}, v.y: {v.Y}, v.Length(): {v.Length()} v.Normalized(): {v.Normalized()}");
+        
+
+        if(v.X != 0)
+        {
+            _animationPlayer.Play("turn");
+            _sprite2D.FlipH = v.X>0;
+        }
+        else
+        {
+            _animationPlayer.Play("fly");
+        }
+
         return v.Normalized();
     }
 
