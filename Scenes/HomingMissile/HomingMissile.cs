@@ -17,6 +17,7 @@ public partial class HomingMissile : HitBox
 
 		if (!IsInstanceValid(_playerRef))
 		{
+			GD.Print("HomingMissile queuefree");
 			QueueFree();
 		}
 	}

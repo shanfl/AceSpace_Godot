@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://e6o0ibn6p6ub"]
 
 [ext_resource type="PackedScene" uid="uid://cx65lbgi8ha1" path="res://Scenes/HitBox/HitBox.tscn" id="1_63kph"]
+[ext_resource type="Script" uid="uid://bgogrcxmdlr7l" path="res://Scenes/Enemy/Saucer.cs" id="1_losfl"]
 [ext_resource type="Texture2D" uid="uid://bi8a04cghqptj" path="res://assets/ships/saucer_1.png" id="2_losfl"]
 [ext_resource type="PackedScene" uid="uid://ysfe57oudtt6" path="res://Scenes/HealthBar/HealthBar.tscn" id="3_q34ak"]
 
@@ -105,6 +106,26 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 5, 4, 3, 2, 3, 1, 1, 1, 1]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"FireMissile"
+}, {
+"args": [],
+"method": &"FireMissile"
+}, {
+"args": [],
+"method": &"StopShooting"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_losfl"]
 resource_name = "spin"
@@ -131,10 +152,20 @@ _data = {
 &"spin": SubResource("Animation_losfl")
 }
 
-[node name="Saucer" type="PathFollow2D" unique_id=1829567346]
+[node name="Saucer" type="PathFollow2D" unique_id=1829567346 node_paths=PackedStringArray("_animationTree", "_healthBar", "_booms", "_hitBox", "_shootTimer", "_sound")]
+rotates = false
+script = ExtResource("1_losfl")
+_animationTree = NodePath("AnimationTree")
+_healthBar = NodePath("HealthBar")
+_booms = NodePath("Booms")
+_hitBox = NodePath("HitBox")
+_shootTimer = NodePath("ShootTimer")
+_sound = NodePath("sound")
+_waitTime = 5.0
 
 [node name="HitBox" parent="." unique_id=1095739546 instance=ExtResource("1_63kph")]
 collision_layer = 2
+collision_mask = 36
 
 [node name="CollisionShape2D" parent="HitBox" index="0" unique_id=623888569]
 shape = SubResource("CircleShape2D_63kph")
@@ -154,6 +185,7 @@ offset_right = 32.0
 offset_bottom = -45.0
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=120291631]
+deterministic = false
 tree_root = SubResource("AnimationNodeStateMachine_rj4ck")
 anim_player = NodePath("../AnimationPlayer")
 

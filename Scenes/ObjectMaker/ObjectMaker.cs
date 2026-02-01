@@ -6,11 +6,9 @@ public partial class ObjectMaker : Node2D
     private PackedScene _playerBulletScene = GD.Load<PackedScene>("res://Scenes/PlayerBullet/PlayerBullet.tscn");
     private PackedScene _enmeyBulletScene = GD.Load<PackedScene>("res://Scenes/BaseBullet/EnemyBullet.tscn");
     private PackedScene _enemyBoombScene = GD.Load<PackedScene>("res://Scenes/BaseBullet/EnemyBomb.tscn");
-
     private PackedScene _powerUpScene = GD.Load<PackedScene>("res://Scenes/PowerUp/PowerUp.tscn");
-
     private PackedScene _explosionScene = GD.Load<PackedScene>("res://Scenes/explosion/Explosion.tscn");
-    
+    private PackedScene _homingmissileScene = GD.Load<PackedScene>("res://Scenes/HomingMissile/HomingMissile.tscn");    
 
     public override void _Ready() 
     { 
@@ -19,6 +17,7 @@ public partial class ObjectMaker : Node2D
         SignalManager.Instance.OnCreatePowerUp += OnCreatePowerUp;
         SignalManager.Instance.OnCreateRandomPowerUp += OnCreateRandomPowerUp;
         SignalManager.Instance.OnCreateBullet += OnCreateBullet;
+        //SignalManager.Instance.OnCreateHomingMissile += OnCreateHomingMissile;
     }
 
 
@@ -66,7 +65,11 @@ public partial class ObjectMaker : Node2D
 
     private void OnCreateHomingMissile(Vector2 startPos)
     {
-        throw new NotImplementedException();
+        GD.Print("------------------>objectmaker OnCreateHomingMissile");
+        var newScene = _homingmissileScene.Instantiate<HomingMissile>();
+        //newScene.SetupPowerUpType((Defs.PowerUpType)puType);
+
+        CallDeferred(MethodName.AddObject,newScene,startPos);
     }
 
 
