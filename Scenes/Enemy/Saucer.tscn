@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://e6o0ibn6p6ub"]
+
+[ext_resource type="PackedScene" uid="uid://cx65lbgi8ha1" path="res://Scenes/HitBox/HitBox.tscn" id="1_63kph"]
+[ext_resource type="Texture2D" uid="uid://bi8a04cghqptj" path="res://assets/ships/saucer_1.png" id="2_losfl"]
+[ext_resource type="PackedScene" uid="uid://ysfe57oudtt6" path="res://Scenes/HealthBar/HealthBar.tscn" id="3_q34ak"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_63kph"]
+radius = 37.363083
+
+[sub_resource type="Animation" id="Animation_63kph"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ojkmn"]
+resource_name = "die"
+length = 1.4
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1.035265, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.1764706, 1, 1), Color(1, 1, 1, 1), Color(1, 0.20392157, 1, 1), Color(1, 1, 1, 1), Color(1, 0.22352941, 1, 1), Color(1, 1, 1, 1), Color(1, 0.27058825, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_q34ak"]
+resource_name = "shoot"
+length = 3.0
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8000001, 2, 2.2, 2.4, 2.6000001, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 5, 4, 3, 2, 3, 1, 1, 1, 1]
+}
+
+[sub_resource type="Animation" id="Animation_losfl"]
+resource_name = "spin"
+length = 5.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q34ak"]
+_data = {
+&"RESET": SubResource("Animation_63kph"),
+&"die": SubResource("Animation_ojkmn"),
+&"shoot": SubResource("Animation_q34ak"),
+&"spin": SubResource("Animation_losfl")
+}
+
+[node name="Saucer" type="PathFollow2D" unique_id=1829567346]
+
+[node name="HitBox" parent="." unique_id=1095739546 instance=ExtResource("1_63kph")]
+position = Vector2(0, -1)
+collision_layer = 2
+
+[node name="CollisionShape2D" parent="HitBox" index="0" unique_id=623888569]
+shape = SubResource("CircleShape2D_63kph")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1922833158]
+position = Vector2(0, 3)
+texture = ExtResource("2_losfl")
+hframes = 7
+
+[node name="Booms" type="Node2D" parent="." unique_id=2097630853]
+
+[node name="sound" type="AudioStreamPlayer2D" parent="." unique_id=106401485]
+
+[node name="HealthBar" parent="." unique_id=1990585527 instance=ExtResource("3_q34ak")]
+offset_left = -32.0
+offset_top = -67.0
+offset_right = 32.0
+offset_bottom = -55.0
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=120291631]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=204831644]
+libraries/ = SubResource("AnimationLibrary_q34ak")
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=1066975351]
+
+[editable path="HitBox"]
