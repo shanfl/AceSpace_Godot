@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://baqoa12mplvy3" path="res://assets/ships/zipper_2.png" id="3_vvsaf"]
 [ext_resource type="Texture2D" uid="uid://ck5b1q1j8hv5o" path="res://assets/ships/zipper_3.png" id="4_8bipi"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g6kqu"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_eyvxw"]
 atlas = ExtResource("2_622er")
 region = Rect2(0, 0, 48, 32)
@@ -109,7 +111,15 @@ animations = [{
 
 [node name="EnemyZiper" unique_id=1415025072 instance=ExtResource("1_g6kqu")]
 
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1095739546) index="0" unique_id=623888569]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_g6kqu")
+
+[node name="Marker2D" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(724250460) index="0" unique_id=851944439]
+
 [node name="AnimatedSprite2D" parent="." index="5" unique_id=1890845579]
 sprite_frames = SubResource("SpriteFrames_11a82")
 animation = &"new_animation_1"
 frame_progress = 0.9443413
+
+[editable path="HitBox"]

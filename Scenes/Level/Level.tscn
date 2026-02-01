@@ -1,27 +1,89 @@
-[gd_scene load_steps=7 format=3 uid="uid://cloqofq2nvy5c"]
+[gd_scene format=3 uid="uid://cloqofq2nvy5c"]
 
 [ext_resource type="PackedScene" uid="uid://bskpcvncmtef7" path="res://Scenes/ShakeCam/ShakeCam.tscn" id="1_4mykw"]
 [ext_resource type="Script" uid="uid://pp4hw36xk0y8" path="res://Scenes/Level/Level.cs" id="1_q2oye"]
 [ext_resource type="PackedScene" uid="uid://cdy67g20x00kv" path="res://Scenes/LevelBg/LevelBg.tscn" id="2_wcgru"]
 [ext_resource type="PackedScene" uid="uid://b6b0yuijsxai1" path="res://Scenes/ObjectMaker/ObjectMaker.tscn" id="3_cq5ir"]
 [ext_resource type="AudioStream" uid="uid://byiqhs42x1f8" path="res://assets/sounds/loops/Mercury.wav" id="6_0xv4h"]
+[ext_resource type="PackedScene" uid="uid://dov1u8i8gxtl3" path="res://Scenes/BaseBullet/EnemyBullet.tscn" id="7_8gphe"]
+[ext_resource type="PackedScene" uid="uid://b4ru5xi20jta6" path="res://Scenes/BaseBullet/EnemyBomb.tscn" id="8_lvwdj"]
+[ext_resource type="PackedScene" uid="uid://37134gufureh" path="res://Scenes/PlayerBullet/PlayerBullet.tscn" id="9_aei0q"]
 [ext_resource type="PackedScene" uid="uid://bc3ivisapki7c" path="res://Scenes/Player/Player.tscn" id="9_tq0dg"]
+[ext_resource type="PackedScene" uid="uid://bsbi0gmc4dm86" path="res://Scenes/PowerUp/PowerUp.tscn" id="10_aei0q"]
+[ext_resource type="PackedScene" uid="uid://btv8qn0wdyoui" path="res://Scenes/Enemy/EnemyBio.tscn" id="11_pocpv"]
+[ext_resource type="PackedScene" uid="uid://du3qc5nf84ddn" path="res://Scenes/Enemy/EnemyZiper.tscn" id="12_0o5jl"]
+[ext_resource type="PackedScene" uid="uid://cay4i7k1ujmoo" path="res://Scenes/Enemy/EnemyBomber.tscn" id="13_q23xf"]
 
-[node name="Level" type="Node2D"]
+[sub_resource type="Curve2D" id="Curve2D_aei0q"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -29, 120, 0, 0, 0, 0, 659, 107)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_s0x6l"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -39, 191, 0, 0, 0, 0, 656, 197)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_acdvp"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -40, 307, 0, 0, 0, 0, 660, 63)
+}
+point_count = 2
+
+[node name="Level" type="Node2D" unique_id=2033784634]
 script = ExtResource("1_q2oye")
 
-[node name="ShakeCam" parent="." instance=ExtResource("1_4mykw")]
+[node name="ShakeCam" parent="." unique_id=192462807 instance=ExtResource("1_4mykw")]
 
-[node name="LevelBg" parent="." instance=ExtResource("2_wcgru")]
+[node name="LevelBg" parent="." unique_id=306618444 instance=ExtResource("2_wcgru")]
 
-[node name="ObjectMaker" parent="." instance=ExtResource("3_cq5ir")]
+[node name="ObjectMaker" parent="." unique_id=1887807532 instance=ExtResource("3_cq5ir")]
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=510294704]
 stream = ExtResource("6_0xv4h")
 volume_db = -80.0
 autoplay = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=416269409]
 
-[node name="Player" parent="." instance=ExtResource("9_tq0dg")]
-position = Vector2(328, 388)
+[node name="Player" parent="." unique_id=1708664974 instance=ExtResource("9_tq0dg")]
+position = Vector2(313, 54)
+
+[node name="EnemyBullet" parent="." unique_id=1095739546 instance=ExtResource("7_8gphe")]
+position = Vector2(317, 252)
+
+[node name="EnemyBullet2" parent="." unique_id=1022575021 instance=ExtResource("7_8gphe")]
+position = Vector2(417, 314)
+
+[node name="EnemyBomb" parent="." unique_id=302276491 instance=ExtResource("8_lvwdj")]
+position = Vector2(315, 282)
+
+[node name="PlayerBullet" parent="." unique_id=2054843937 instance=ExtResource("9_aei0q")]
+position = Vector2(417, 267)
+
+[node name="PowerUp" parent="." unique_id=2128045708 instance=ExtResource("10_aei0q")]
+position = Vector2(209, 176)
+
+[node name="Path2D" type="Path2D" parent="." unique_id=749541178]
+curve = SubResource("Curve2D_aei0q")
+
+[node name="EnemyBio" parent="Path2D" unique_id=1415025072 instance=ExtResource("11_pocpv")]
+position = Vector2(-29, 120)
+
+[node name="Path2D2" type="Path2D" parent="." unique_id=750148691]
+curve = SubResource("Curve2D_s0x6l")
+
+[node name="EnemyZiper" parent="Path2D2" unique_id=1612318210 instance=ExtResource("12_0o5jl")]
+position = Vector2(-39, 191)
+
+[node name="Path2D3" type="Path2D" parent="." unique_id=2023505830]
+curve = SubResource("Curve2D_acdvp")
+
+[node name="EnemyBomber" parent="Path2D3" unique_id=1934170231 instance=ExtResource("13_q23xf")]
+position = Vector2(-40, 307)
+cubic_interp = false
+
+[node name="EnemyBio" parent="." unique_id=571536833 instance=ExtResource("11_pocpv")]
+position = Vector2(418, 212)

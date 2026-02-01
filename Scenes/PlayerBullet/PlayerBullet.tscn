@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://37134gufureh"]
+
+[ext_resource type="PackedScene" uid="uid://c2hio4nfiyix3" path="res://Scenes/BaseBullet/BaseBullet.tscn" id="1_nik60"]
+[ext_resource type="Texture2D" uid="uid://c2ltmcaam8cos" path="res://assets/lasers/laserBlue03.png" id="2_xsbjh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nik60"]
+size = Vector2(4, 16)
+
+[node name="PlayerBullet" unique_id=1095739546 instance=ExtResource("1_nik60")]
+collision_layer = 4
+collision_mask = 18
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=623888569]
+shape = SubResource("RectangleShape2D_nik60")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="1" unique_id=63685194]
+rect = Rect2(-2, -8, 4, 16)
+
+[node name="Sprite2D" parent="." index="2" unique_id=1984294625]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_xsbjh")

@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://djsa8iq5cshk4" path="res://assets/ships/bomber_2.png" id="3_5ufov"]
 [ext_resource type="Texture2D" uid="uid://dnggprhs8k7me" path="res://assets/ships/bomber_3.png" id="4_e1jro"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qq2v7"]
+size = Vector2(44, 47)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_hg42l"]
 atlas = ExtResource("2_80e1w")
 region = Rect2(0, 0, 48, 58)
@@ -108,7 +111,27 @@ animations = [{
 }]
 
 [node name="EnemyBomber" unique_id=1415025072 instance=ExtResource("1_qq2v7")]
+_bulletType = 2
+
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1095739546) index="0" unique_id=623888569]
+position = Vector2(1, 3.5)
+shape = SubResource("RectangleShape2D_qq2v7")
+debug_color = Color(0.91814625, 0.24823844, 0.36852866, 0.41960785)
+
+[node name="Marker2D" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(724250460) index="0" unique_id=1917687608]
+position = Vector2(-12, -5)
+
+[node name="Marker2D2" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(724250460) index="1" unique_id=949543625]
+position = Vector2(6, 6)
+
+[node name="Marker2D3" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(724250460) index="2" unique_id=1433145935]
+position = Vector2(3, -5)
+
+[node name="Marker2D4" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(724250460) index="3" unique_id=244240991]
+position = Vector2(-11, 12)
 
 [node name="AnimatedSprite2D" parent="." index="5" unique_id=1890845579]
 sprite_frames = SubResource("SpriteFrames_ifbir")
 animation = &"new_animation_1"
+
+[editable path="HitBox"]

@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://b4l1oowpssg18" path="res://assets/ships/biomech_3.png" id="4_e3fol"]
 [ext_resource type="Texture2D" uid="uid://bwmbxx46op33r" path="res://assets/ships/biomech_4.png" id="5_jxeeq"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n0rxi"]
+size = Vector2(20, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_nx3nw"]
 atlas = ExtResource("2_isg3k")
 region = Rect2(0, 0, 48, 48)
@@ -143,6 +146,18 @@ animations = [{
 
 [node name="EnemyBio" unique_id=1415025072 instance=ExtResource("1_reopv")]
 
+[node name="CollisionShape2D" parent="HitBox" parent_id_path=PackedInt32Array(1095739546) index="0" unique_id=623888569]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_n0rxi")
+
+[node name="Marker2D" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(724250460) index="0" unique_id=682728932]
+position = Vector2(0, 4)
+
+[node name="Marker2D2" type="Marker2D" parent="Booms" parent_id_path=PackedInt32Array(724250460) index="1" unique_id=724940561]
+position = Vector2(0, -6)
+
 [node name="AnimatedSprite2D" parent="." index="5" unique_id=1890845579]
 sprite_frames = SubResource("SpriteFrames_jxeeq")
 animation = &"new_animation_1"
+
+[editable path="HitBox"]

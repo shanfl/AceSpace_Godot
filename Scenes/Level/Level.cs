@@ -14,6 +14,8 @@ public partial class Level : Node2D
 	{
         if(Input.IsActionJustPressed("test"))
         {
+           SignalManager.EmitOnCreatePowerUp(new Vector2(100,100),(int)Defs.PowerUpType.Shield);
+           SignalManager.EmitOnCreateExplosion(new Vector2(100,200),(int)Defs.ExplosionType.Explosion);
         }
         if(Input.IsActionJustPressed("quit"))
         {

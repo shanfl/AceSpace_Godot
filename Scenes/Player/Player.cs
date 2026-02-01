@@ -14,6 +14,8 @@ public partial class Player : Area2D
     [Export] private Sprite2D _sprite2D;
     [Export] private AnimationPlayer _animationPlayer;
 
+    [Export]private Shield _shield;
+
     private Vector2 _upperLeft;
     private Vector2 _lowerRight;
 
@@ -29,6 +31,11 @@ public partial class Player : Area2D
     {
         Vector2 desirePosition = GlobalPosition + GetInput()*(float)delta * _speed;
         GlobalPosition = desirePosition.Clamp(_upperLeft,_lowerRight);
+
+        if (Input.IsActionJustPressed("shoot"))
+        {
+            Shoot();
+        }
 
     }
 
@@ -51,6 +58,11 @@ public partial class Player : Area2D
         return v.Normalized();
     }
 
+    private void Shoot()
+    {
+        SignalManager.EmitOnCreateBullet(GlobalPosition,_bulletDirection,_bulletSpeed,(int)Defs.BulletType.Player);    
+    }
+
     private void SetLimits()
     {
         var vp = GetViewportRect();
@@ -60,5 +72,16 @@ public partial class Player : Area2D
 
     private void OnAreaEntered(Area2D area)
     {
+        if(area is PowerUp)
+        {
+            var powerUp = area as PowerUp;
+            if(powerUp.GetPowerUpType() == Defs.PowerUpType.Health)
+            {
+                
+            }else if(powerUp.GetPowerUpType() == Defs.PowerUpType.Shield)
+            {
+                _shield.EnableShield();
+            }
+        }
     }
 }

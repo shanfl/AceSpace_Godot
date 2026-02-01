@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bsbi0gmc4dm86"]
+
+[ext_resource type="PackedScene" uid="uid://cx65lbgi8ha1" path="res://Scenes/HitBox/HitBox.tscn" id="1_nc0ue"]
+[ext_resource type="Texture2D" uid="uid://b4fd8pwkobg7e" path="res://assets/misc/shield_gold.png" id="2_04hni"]
+[ext_resource type="Script" uid="uid://dkjrvnkc26oc5" path="res://Scenes/PowerUp/PowerUp.cs" id="2_kk5lk"]
+[ext_resource type="PackedScene" uid="uid://j57uaaweb83i" path="res://Scenes/OutOfTime/OutOfTime.tscn" id="3_kk5lk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i1na4"]
+radius = 9.848858
+
+[node name="PowerUp" unique_id=1095739546 node_paths=PackedStringArray("_sprite", "_sound") instance=ExtResource("1_nc0ue")]
+collision_layer = 64
+collision_mask = 1
+script = ExtResource("2_kk5lk")
+_speed = 100.0
+_sprite = NodePath("Sprite2D")
+_sound = NodePath("Sound")
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=623888569]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_i1na4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1" unique_id=1216474609]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_04hni")
+
+[node name="OutOfTime" parent="." index="2" unique_id=769573538 instance=ExtResource("3_kk5lk")]
+_lifeTime = 20.0
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="." index="3" unique_id=462375555]

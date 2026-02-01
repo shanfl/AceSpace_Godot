@@ -4,9 +4,13 @@
 [ext_resource type="Script" uid="uid://hgquj77v7jw3" path="res://Scenes/Enemy/EnemyBase.cs" id="1_p26r3"]
 [ext_resource type="PackedScene" uid="uid://j57uaaweb83i" path="res://Scenes/OutOfTime/OutOfTime.tscn" id="2_p26r3"]
 
-[node name="EnemyBase" type="PathFollow2D" unique_id=1415025072]
+[node name="EnemyBase" type="PathFollow2D" unique_id=1415025072 node_paths=PackedStringArray("_laserTimer", "_sound", "_animatedSprite2D")]
 rotates = false
 script = ExtResource("1_p26r3")
+_laserTimer = NodePath("LaserTimer")
+_sound = NodePath("Sound")
+_animatedSprite2D = NodePath("AnimatedSprite2D")
+_shoots = true
 
 [node name="HitBox" parent="." unique_id=1095739546 instance=ExtResource("1_klqhl")]
 collision_layer = 2
@@ -20,6 +24,7 @@ collision_mask = 4
 _lifeTime = 40.0
 
 [node name="LaserTimer" type="Timer" parent="." unique_id=34054096]
+one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1890845579]
 flip_v = true

@@ -3,7 +3,15 @@ using System;
 
 public partial class ObjectMaker : Node2D
 {
+    private PackedScene _playerBulletScene = GD.Load<PackedScene>("res://Scenes/PlayerBullet/PlayerBullet.tscn");
+    private PackedScene _enmeyBulletScene = GD.Load<PackedScene>("res://Scenes/BaseBullet/EnemyBullet.tscn");
+    private PackedScene _enemyBoombScene = GD.Load<PackedScene>("res://Scenes/BaseBullet/EnemyBomb.tscn");
+
+    private PackedScene _powerUpScene = GD.Load<PackedScene>("res://Scenes/PowerUp/PowerUp.tscn");
+
+    private PackedScene _explosionScene = GD.Load<PackedScene>("res://Scenes/explosion/Explosion.tscn");
     
+
     public override void _Ready() 
     { 
         SignalManager.Instance.OnCreateExplosion += OnCreateExplosion;
@@ -13,21 +21,46 @@ public partial class ObjectMaker : Node2D
         SignalManager.Instance.OnCreateBullet += OnCreateBullet;
     }
 
+
+    private PackedScene GetBulletScene(int type)
+    {
+        Defs.BulletType bulletType = (Defs.BulletType)type;
+        switch (bulletType)
+        {
+            case Defs.BulletType.Player:
+                return _playerBulletScene;
+            case Defs.BulletType.Enemy:
+                return _enmeyBulletScene;
+            case Defs.BulletType.EnemyBomb:
+                return _enemyBoombScene;
+            default:
+                return _playerBulletScene;
+        }
+    }
+
     private void OnCreateBullet(Vector2 startPos, Vector2 direction, float speed, int type)
     {
-        throw new NotImplementedException();
+        // throw new NotImplementedException();
+        var newScene = GetBulletScene(type).Instantiate<BaseBullet>();
+        newScene.Setup(direction,speed);
+        CallDeferred(MethodName.AddObject,newScene,startPos);
     }
+
 
 
     private void OnCreateRandomPowerUp(Vector2 startPos)
     {
-        throw new NotImplementedException();
+        Defs.PowerUpType puType = SpaceUtils.GetRandomEnumValue<Defs.PowerUpType>();
+        OnCreatePowerUp(startPos,(int)puType);
     }
 
 
     private void OnCreatePowerUp(Vector2 startPos, int puType)
     {
-        throw new NotImplementedException();
+        var newScene = _powerUpScene.Instantiate<PowerUp>();
+        newScene.SetupPowerUpType((Defs.PowerUpType)puType);
+
+        CallDeferred(MethodName.AddObject,newScene,startPos);
     }
 
 
@@ -39,7 +72,9 @@ public partial class ObjectMaker : Node2D
 
     private void OnCreateExplosion(Vector2 startPos, int explosionType)
     {
-        throw new NotImplementedException();
+        var scene = _explosionScene.Instantiate<Explosion>();
+        scene.Setup((Defs.ExplosionType)explosionType);
+        CallDeferred(MethodName.AddObject,scene,startPos);
     }
 
 

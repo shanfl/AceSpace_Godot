@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://nfslc3x0frjc" path="res://assets/ships/ships_human_1.png" id="1_6mddq"]
 [ext_resource type="Script" uid="uid://c2xc1qj0uhyko" path="res://Scenes/Player/Player.cs" id="1_q5e1x"]
+[ext_resource type="PackedScene" uid="uid://cidsi3wywmbhq" path="res://Scenes/Shield/Shield.tscn" id="3_h54ih"]
 
 [sub_resource type="Animation" id="Animation_j64ny"]
 length = 0.001
@@ -64,11 +65,12 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_34tlh"]
 radius = 13.0
 
-[node name="Player" type="Area2D" unique_id=1719661138 node_paths=PackedStringArray("_sprite2D", "_animationPlayer") groups=["player"]]
+[node name="Player" type="Area2D" unique_id=1719661138 node_paths=PackedStringArray("_sprite2D", "_animationPlayer", "_shield") groups=["player"]]
 collision_mask = 90
 script = ExtResource("1_q5e1x")
 _sprite2D = NodePath("Sprite2D")
 _animationPlayer = NodePath("AnimationPlayer")
+_shield = NodePath("Shield")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=928110670]
 texture = ExtResource("1_6mddq")
@@ -80,3 +82,6 @@ autoplay = &"fly"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2100585990]
 shape = SubResource("CircleShape2D_34tlh")
+
+[node name="Shield" parent="." unique_id=427702632 instance=ExtResource("3_h54ih")]
+_startHealth = 2.0
