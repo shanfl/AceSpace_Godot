@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cm74kxpged886"]
+
+[ext_resource type="Script" uid="uid://c3j8yrllty64l" path="res://Scenes/WaveManager/WaveManager.cs" id="1_631jx"]
+[ext_resource type="Resource" uid="uid://cghdrr4ukhieb" path="res://Resources/waves.tres" id="2_bakpk"]
+
+[sub_resource type="Curve2D" id="Curve2D_vp541"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -75, 71, 0, 0, 0, 0, 144, 228, 0, 0, 0, 0, 451, 249, 0, 0, 0, 0, 720, 66)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_631jx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -58, 244, 0, 0, 0, 0, 52, 183, 0, 0, 0, 0, 123, 242, 0, 0, 0, 0, 225, 196, 0, 0, 0, 0, 289, 241, 0, 0, 0, 0, 362, 196, 0, 0, 0, 0, 408, 245, 0, 0, 0, 0, 478, 205, 0, 0, 0, 0, 543, 244, 0, 0, 0, 0, 605, 202, 0, 0, 0, 0, 678, 253, 0, 0, 0, 0, 733, 204, 0, 0, 0, 0, 781, 252)
+}
+point_count = 13
+
+[sub_resource type="Curve2D" id="Curve2D_bakpk"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -80, 33, 0, 0, 0, 0, 83, 332, 0, 0, 0, 0, 167, 24, 0, 0, 0, 0, 458, 26, 0, 0, 0, 0, 603, 334, 0, 0, 0, 0, 762, 36)
+}
+point_count = 6
+
+[node name="WaveManager" type="Node2D" unique_id=2026435584 node_paths=PackedStringArray("_pathsContainer", "_spawnTimer")]
+script = ExtResource("1_631jx")
+_enemyWavesResource = ExtResource("2_bakpk")
+_pathsContainer = NodePath("Paths")
+_spawnTimer = NodePath("SpawnTimer")
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1993463461]
+one_shot = true
+
+[node name="Paths" type="Node2D" parent="." unique_id=249943064]
+
+[node name="Path2D" type="Path2D" parent="Paths" unique_id=1304344028]
+curve = SubResource("Curve2D_vp541")
+
+[node name="Path2D2" type="Path2D" parent="Paths" unique_id=871382665]
+position = Vector2(1, 0)
+curve = SubResource("Curve2D_vp541")
+
+[node name="Path2D3" type="Path2D" parent="Paths" unique_id=1542981978]
+curve = SubResource("Curve2D_631jx")
+
+[node name="Path2D4" type="Path2D" parent="Paths" unique_id=889272944]
+curve = SubResource("Curve2D_bakpk")
