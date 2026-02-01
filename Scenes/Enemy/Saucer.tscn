@@ -7,6 +7,32 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_63kph"]
 radius = 37.363083
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_63kph"]
+animation = &"die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_losfl"]
+animation = &"shoot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q34ak"]
+animation = &"spin"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ojkmn"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ak3xx"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_rj4ck"]
+states/End/position = Vector2(814, 118)
+states/die/node = SubResource("AnimationNodeAnimation_63kph")
+states/die/position = Vector2(500, 167)
+states/shoot/node = SubResource("AnimationNodeAnimation_losfl")
+states/shoot/position = Vector2(517, 107)
+states/spin/node = SubResource("AnimationNodeAnimation_q34ak")
+states/spin/position = Vector2(361, 100)
+transitions = ["Start", "spin", SubResource("AnimationNodeStateMachineTransition_ojkmn"), "shoot", "spin", SubResource("AnimationNodeStateMachineTransition_ak3xx")]
+
 [sub_resource type="Animation" id="Animation_63kph"]
 length = 0.001
 tracks/0/type = "value"
@@ -108,14 +134,12 @@ _data = {
 [node name="Saucer" type="PathFollow2D" unique_id=1829567346]
 
 [node name="HitBox" parent="." unique_id=1095739546 instance=ExtResource("1_63kph")]
-position = Vector2(0, -1)
 collision_layer = 2
 
 [node name="CollisionShape2D" parent="HitBox" index="0" unique_id=623888569]
 shape = SubResource("CircleShape2D_63kph")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1922833158]
-position = Vector2(0, 3)
 texture = ExtResource("2_losfl")
 hframes = 7
 
@@ -125,11 +149,13 @@ hframes = 7
 
 [node name="HealthBar" parent="." unique_id=1990585527 instance=ExtResource("3_q34ak")]
 offset_left = -32.0
-offset_top = -67.0
+offset_top = -57.0
 offset_right = 32.0
-offset_bottom = -55.0
+offset_bottom = -45.0
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=120291631]
+tree_root = SubResource("AnimationNodeStateMachine_rj4ck")
+anim_player = NodePath("../AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=204831644]
 libraries/ = SubResource("AnimationLibrary_q34ak")
