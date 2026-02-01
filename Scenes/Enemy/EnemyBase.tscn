@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cx65lbgi8ha1" path="res://Scenes/HitBox/HitBox.tscn" id="1_klqhl"]
 [ext_resource type="Script" uid="uid://hgquj77v7jw3" path="res://Scenes/Enemy/EnemyBase.cs" id="1_p26r3"]
 [ext_resource type="PackedScene" uid="uid://j57uaaweb83i" path="res://Scenes/OutOfTime/OutOfTime.tscn" id="2_p26r3"]
+[ext_resource type="PackedScene" uid="uid://ysfe57oudtt6" path="res://Scenes/HealthBar/HealthBar.tscn" id="4_w3c4a"]
 
 [node name="EnemyBase" type="PathFollow2D" unique_id=1415025072 node_paths=PackedStringArray("_laserTimer", "_sound", "_animatedSprite2D")]
 rotates = false
@@ -28,3 +29,5 @@ one_shot = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1890845579]
 flip_v = true
+
+[node name="HealthBar" parent="." unique_id=1990585527 instance=ExtResource("4_w3c4a")]

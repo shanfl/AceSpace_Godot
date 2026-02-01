@@ -122,4 +122,11 @@ sprite_frames = SubResource("SpriteFrames_11a82")
 animation = &"new_animation_1"
 frame_progress = 0.9443413
 
+[node name="HealthBar" parent="." index="6" unique_id=1990585527]
+offset_left = -16.0
+offset_top = -19.0
+offset_right = 16.0
+offset_bottom = -17.0
+StartHealth = 69
+
 [editable path="HitBox"]

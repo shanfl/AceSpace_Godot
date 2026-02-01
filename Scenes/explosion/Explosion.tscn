@@ -172,6 +172,7 @@ animations = [{
 }]
 
 [node name="Explosion" type="AnimatedSprite2D" unique_id=1953356563 node_paths=PackedStringArray("_sound")]
+z_index = 10
 sprite_frames = SubResource("SpriteFrames_f6cll")
 animation = &"boom"
 autoplay = "boom"

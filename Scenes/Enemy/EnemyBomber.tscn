@@ -134,4 +134,11 @@ position = Vector2(-11, 12)
 sprite_frames = SubResource("SpriteFrames_ifbir")
 animation = &"new_animation_1"
 
+[node name="HealthBar" parent="." index="6" unique_id=1990585527]
+offset_left = -15.0
+offset_top = -34.0
+offset_right = 17.0
+offset_bottom = -32.0
+StartHealth = 26
+
 [editable path="HitBox"]

@@ -160,4 +160,11 @@ position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_jxeeq")
 animation = &"new_animation_1"
 
+[node name="HealthBar" parent="." index="6" unique_id=1990585527]
+offset_left = -16.0
+offset_top = -30.0
+offset_right = 16.0
+offset_bottom = -28.0
+StartHealth = 35
+
 [editable path="HitBox"]
